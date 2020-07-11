@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%block head%}
+
+{%endblock%}
+
+{%block body%}
+<div class="jumbotron">
+    <h1>Plan My day App</h1>
+    <p>Enter Todo Below</p>
+
+    <form class="form-inline" method="POST">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="exampleFormControlTextarea1" class="sr-only">ToDo</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1 content" placeholder="Enter ToDo here!"name="content">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+    </form>
+
+    {% if tasks|length < 1 %}
+
+    <h3>You have no tasks yet</h3>
+
+    {%else%}
+    
+    <div class="card">
+        {% for task in tasks %}
+        <div class="card-header">
+          {{task.date_created.date()}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> {{task.content}}</h5>
+          <!-- <p class="card-text"> Todo With supporting text below as a natural lead-in to additional content.</p> -->
+          <a href="/update/{{task.id}}" class="btn btn-primary">Update</a>
+          <a href="/delete/{{task.id}}" class="btn btn-danger"> Delete </a>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% endif %}
+</div>
+{%endblock%}

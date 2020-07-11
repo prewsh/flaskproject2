@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block head%}
+Plan My day App
+{%endblock%}
+
+{%block body%}
+<div class="jumbotron">
+    <h3>Update Plan</h3>
+
+    <form class="form-inline" method="POST" action="/update/{{task.id}}">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="exampleFormControlTextarea1" class="sr-only">ToDo</label>
+          <input type="text" class="form-control" value="{{task.content}}" id="exampleFormControlTextarea1 content" placeholder="Enter ToDo here!"name="content">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+    </form>
+      
+</div>
+{%endblock%}
